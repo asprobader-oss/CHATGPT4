@@ -118,12 +118,13 @@ export default function App() {
           <div className="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/60 to-transparent" />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-          <div className="max-w-3xl">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex justify-center">
+          <div className="max-w-4xl text-center flex flex-col items-center">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
+              className="flex flex-col items-center"
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -133,11 +134,11 @@ export default function App() {
                 Todo el Fútbol <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-500">Sin Cortes.</span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-xl leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
                 Disfruta de <strong>LaLiga, DAZN, Movistar+ y la Champions League</strong>. Más de 15,000 canales en vivo, 50,000+ películas y series en calidad 4K UHD.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row justify-center gap-4 w-full">
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
                   <MessageCircle className="w-5 h-5" />
                   Pedir Prueba Gratis
@@ -147,7 +148,7 @@ export default function App() {
                 </a>
               </div>
 
-              <div className="mt-12 flex flex-wrap items-center gap-6 text-sm text-gray-400 font-medium">
+              <div className="mt-12 flex flex-wrap justify-center items-center gap-6 text-sm text-gray-400 font-medium">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-brand-500" /> Activación Inmediata
                 </div>
@@ -253,8 +254,8 @@ export default function App() {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {[
               { duration: "1 Mes", price: "10.00", period: "€", popular: false, total: "Pago único" },
-              { duration: "6 Meses", price: "40.00", period: "€", popular: true, total: "Ahorras un 33%" },
-              { duration: "12 Meses", price: "60.00", period: "€", popular: false, total: "Mejor valor - Ahorras un 50%" }
+              { duration: "6 Meses", price: "45.00", period: "€", popular: true, total: "Ahorras un 25%" },
+              { duration: "12 Meses", price: "70.00", period: "€", popular: false, total: "Mejor valor - Ahorras un 41%" }
             ].map((plan, i) => (
               <motion.div 
                 key={i}
@@ -303,6 +304,114 @@ export default function App() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Blog / Articles Section */}
+      <section id="articulos" className="py-24 bg-dark-900 relative border-t border-white/5">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Todo lo que necesitas saber sobre IPTV</h2>
+            <p className="text-gray-400 text-lg">Guías, consejos y novedades para sacar el máximo partido a tu suscripción de LIST PRO IPTV.</p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Article 1 */}
+            <motion.article 
+              variants={fadeIn}
+              className="bg-dark-800 rounded-3xl overflow-hidden border border-white/5 hover:border-brand-500/30 transition-colors group flex flex-col"
+            >
+              <div className="h-64 overflow-hidden shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=2070&auto=format&fit=crop" 
+                  alt="Mejor IPTV España" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="p-8 flex flex-col grow">
+                <h3 className="text-2xl font-bold mb-4 text-white">El Mejor IPTV en España 2024</h3>
+                <p className="text-gray-400 leading-relaxed mb-6 grow">
+                  Si buscas el mejor IPTV en España, LIST PRO IPTV es la solución definitiva. Olvídate de los cortes en los momentos más importantes. Ofrecemos la lista más estable del mercado con más de 15,000 canales, incluyendo todo el contenido premium de España. Nuestra tecnología anti-buffering garantiza una experiencia fluida, convirtiéndonos en el proveedor número uno a nivel nacional. No te conformes con menos cuando puedes tener la máxima calidad.
+                </p>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-brand-500 font-semibold hover:text-brand-400 flex items-center gap-2 mt-auto">
+                  Saber más <ChevronDown className="w-4 h-4 -rotate-90" />
+                </a>
+              </div>
+            </motion.article>
+
+            {/* Article 2 */}
+            <motion.article 
+              variants={fadeIn}
+              className="bg-dark-800 rounded-3xl overflow-hidden border border-white/5 hover:border-brand-500/30 transition-colors group flex flex-col"
+            >
+              <div className="h-64 overflow-hidden shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=2057&auto=format&fit=crop" 
+                  alt="Mejor aparato para IPTV" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="p-8 flex flex-col grow">
+                <h3 className="text-2xl font-bold mb-4 text-white">El Mejor Aparato para usar para ver IPTV</h3>
+                <p className="text-gray-400 leading-relaxed mb-6 grow">
+                  ¿Cuál es el mejor aparato para ver IPTV? Aunque nuestro servicio es compatible con Smart TVs, móviles y PCs, para la mejor experiencia recomendamos usar un <strong>Amazon Fire TV Stick 4K Max</strong>, un <strong>Apple TV 4K</strong>, o un TV Box Android de alto rendimiento como el <strong>NVIDIA Shield TV</strong>. Estos dispositivos ofrecen procesadores potentes que manejan la decodificación de video 4K sin esfuerzo, asegurando una navegación rápida por nuestra enorme librería VOD y una reproducción de canales en vivo impecable.
+                </p>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-brand-500 font-semibold hover:text-brand-400 flex items-center gap-2 mt-auto">
+                  Saber más <ChevronDown className="w-4 h-4 -rotate-90" />
+                </a>
+              </div>
+            </motion.article>
+
+            {/* Article 3 */}
+            <motion.article 
+              variants={fadeIn}
+              className="bg-dark-800 rounded-3xl overflow-hidden border border-white/5 hover:border-brand-500/30 transition-colors group flex flex-col"
+            >
+              <div className="h-64 overflow-hidden shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2070&auto=format&fit=crop" 
+                  alt="Fútbol LaLiga, Barça, Madrid, Atlético" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="p-8 flex flex-col grow">
+                <h3 className="text-2xl font-bold mb-4 text-white">Fútbol Total: LaLiga, Barça, Madrid y Atlético</h3>
+                <p className="text-gray-400 leading-relaxed mb-6 grow">
+                  Vive la pasión de LaLiga EA Sports como si estuvieras en el estadio. Con LIST PRO IPTV, no te perderás ni un solo partido del <strong>Real Madrid, FC Barcelona, o Atlético de Madrid</strong>. Disfruta de El Clásico, los derbis y toda la Champions League en calidad 4K UHD. Siente cada gol, cada jugada y cada victoria con la mejor transmisión en directo, sin interrupciones y con comentarios en español.
+                </p>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-brand-500 font-semibold hover:text-brand-400 flex items-center gap-2 mt-auto">
+                  Saber más <ChevronDown className="w-4 h-4 -rotate-90" />
+                </a>
+              </div>
+            </motion.article>
+
+            {/* Article 4 */}
+            <motion.article 
+              variants={fadeIn}
+              className="bg-dark-800 rounded-3xl overflow-hidden border border-white/5 hover:border-brand-500/30 transition-colors group flex flex-col"
+            >
+              <div className="h-64 overflow-hidden shrink-0">
+                <img 
+                  src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop" 
+                  alt="IPTV 4K Sin Cortes" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div className="p-8 flex flex-col grow">
+                <h3 className="text-2xl font-bold mb-4 text-white">IPTV 4K Sin Cortes: La Revolución</h3>
+                <p className="text-gray-400 leading-relaxed mb-6 grow">
+                  El entretenimiento en casa ha evolucionado. Con nuestra tecnología de servidores premium, el IPTV 4K sin cortes es una realidad. Accede a más de 50,000 películas y series de estreno de plataformas como Netflix, HBO, Disney y Amazon Prime. Todo en un solo lugar, con una interfaz fácil de usar y actualización diaria de contenido. Di adiós a las múltiples suscripciones costosas y únete a la revolución del streaming inteligente.
+                </p>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-brand-500 font-semibold hover:text-brand-400 flex items-center gap-2 mt-auto">
+                  Saber más <ChevronDown className="w-4 h-4 -rotate-90" />
+                </a>
+              </div>
+            </motion.article>
           </div>
         </div>
       </section>
