@@ -37,6 +37,23 @@ const staggerContainer = {
   transition: { staggerChildren: 0.1 }
 };
 
+const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const targetId = href.replace('/', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      window.history.pushState({}, '', href);
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  return (
+    <a href={href} onClick={handleClick} className="hover:text-white transition-colors">
+      {children}
+    </a>
+  );
+};
+
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -46,6 +63,36 @@ export default function App() {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
+
+    // Initial load: Handle direct URL paths for SEO links (e.g. /deportes)
+    const path = window.location.pathname.replace(/^\/|\/$/g, '');
+    const validTitles: Record<string, string> = {
+      'caracteristicas': 'Características - LIST PRO IPTV',
+      'deportes': 'Deportes y Fútbol - LIST PRO IPTV',
+      'precios': 'Planes y Precios - LIST PRO IPTV',
+      'faq': 'Preguntas Frecuentes - LIST PRO IPTV',
+      'articulos': 'Blog y Artículos - LIST PRO IPTV'
+    };
+
+    if (validTitles[path]) {
+      document.title = validTitles[path];
+      setTimeout(() => {
+        const element = document.getElementById(path);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+    } else if (window.location.hash) {
+      // Fallback for standard hash links
+      setTimeout(() => {
+        const id = window.location.hash.replace('#', '');
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 300);
+    }
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -62,10 +109,10 @@ export default function App() {
           </div>
           
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-300">
-            <a href="#caracteristicas" className="hover:text-white transition-colors">Características</a>
-            <a href="#deportes" className="hover:text-white transition-colors">Deportes</a>
-            <a href="#precios" className="hover:text-white transition-colors">Precios</a>
-            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+            <NavLink href="/caracteristicas">Características</NavLink>
+            <NavLink href="/deportes">Deportes</NavLink>
+            <NavLink href="/precios">Precios</NavLink>
+            <NavLink href="/faq">FAQ</NavLink>
           </div>
 
           <div className="hidden md:flex items-center gap-4">
@@ -90,10 +137,10 @@ export default function App() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-40 bg-dark-900/95 backdrop-blur-xl pt-24 px-6 md:hidden">
           <div className="flex flex-col gap-6 text-lg font-medium">
-            <a href="#caracteristicas" onClick={() => setMobileMenuOpen(false)}>Características</a>
-            <a href="#deportes" onClick={() => setMobileMenuOpen(false)}>Deportes</a>
-            <a href="#precios" onClick={() => setMobileMenuOpen(false)}>Precios</a>
-            <a href="#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a>
+            <NavLink href="/caracteristicas"><span onClick={() => setMobileMenuOpen(false)}>Características</span></NavLink>
+            <NavLink href="/deportes"><span onClick={() => setMobileMenuOpen(false)}>Deportes</span></NavLink>
+            <NavLink href="/precios"><span onClick={() => setMobileMenuOpen(false)}>Precios</span></NavLink>
+            <NavLink href="/faq"><span onClick={() => setMobileMenuOpen(false)}>FAQ</span></NavLink>
             <hr className="border-white/10" />
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-green-500">
               <MessageCircle className="w-5 h-5" /> Contactar por WhatsApp
@@ -109,13 +156,14 @@ export default function App() {
       <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=2070&auto=format&fit=crop" 
+            src="/hero-bg.jpg" 
             alt="Fútbol y TV Background" 
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-20 mix-blend-luminosity"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/60 to-transparent" />
+          <div className="absolute inset-0 bg-dark-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/90 to-dark-900/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-dark-900 via-dark-900/80 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex justify-center">
@@ -143,9 +191,11 @@ export default function App() {
                   <MessageCircle className="w-5 h-5" />
                   Pedir Prueba Gratis
                 </a>
-                <a href="#precios" className="bg-white/10 hover:bg-white/15 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all backdrop-blur-sm flex items-center justify-center gap-2">
-                  Ver Precios
-                </a>
+                <NavLink href="/precios">
+                  <span className="bg-white/10 hover:bg-white/15 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all backdrop-blur-sm flex items-center justify-center gap-2">
+                    Ver Precios
+                  </span>
+                </NavLink>
               </div>
 
               <div className="mt-12 flex flex-wrap justify-center items-center gap-6 text-sm text-gray-400 font-medium">
@@ -471,9 +521,9 @@ export default function App() {
             <div>
               <h4 className="font-bold mb-4 text-white">Servicio</h4>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#precios" className="hover:text-white transition-colors">Precios</a></li>
-                <li><a href="#deportes" className="hover:text-white transition-colors">Deportes en Directo</a></li>
-                <li><a href="#caracteristicas" className="hover:text-white transition-colors">Características</a></li>
+                <li><NavLink href="/precios">Precios</NavLink></li>
+                <li><NavLink href="/deportes">Deportes en Directo</NavLink></li>
+                <li><NavLink href="/caracteristicas">Características</NavLink></li>
               </ul>
             </div>
 
@@ -481,7 +531,7 @@ export default function App() {
               <h4 className="font-bold mb-4 text-white">Soporte</h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li><a href={WA_LINK} className="hover:text-white transition-colors">Contacto WhatsApp</a></li>
-                <li><a href="#faq" className="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
+                <li><NavLink href="/faq">Preguntas Frecuentes</NavLink></li>
                 <li><a href={WA_LINK} className="hover:text-white transition-colors">Guías de Instalación</a></li>
               </ul>
             </div>
