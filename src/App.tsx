@@ -43,7 +43,7 @@ const pageMetadata: Record<string, { title: string, description: string, keyword
   '': {
     title: 'LIST PRO IPTV - Mejor IPTV España | LaLiga, DAZN, Movistar',
     description: 'El mejor servicio IPTV en España. Disfruta de LaLiga, DAZN, Movistar, Champions League, películas y series en 4K sin cortes. Prueba gratis disponible.',
-    keywords: 'IPTV España, comprar IPTV, mejor IPTV, LaLiga IPTV, DAZN IPTV, Movistar IPTV, fútbol gratis, IPTV sin cortes, lista IPTV 2024'
+    keywords: 'IPTV España, comprar IPTV, mejor IPTV, LaLiga IPTV, DAZN IPTV, Movistar IPTV, fútbol gratis, IPTV sin cortes, lista IPTV 2026'
   },
   'caracteristicas': {
     title: 'Características de nuestro IPTV - LIST PRO IPTV',
@@ -289,7 +289,7 @@ export default function App() {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 backdrop-blur-sm mb-6">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-700 dark:text-gray-300">El Mejor IPTV de España 2024</span>
+                <span className="text-xs font-medium uppercase tracking-wider text-gray-700 dark:text-gray-300">El Mejor IPTV de España 2026</span>
               </div>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.05] tracking-tight mb-6">
                 Todo el Fútbol <br/>
@@ -494,7 +494,7 @@ export default function App() {
                 />
               </div>
               <div className="p-8 flex flex-col grow">
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">El Mejor IPTV en España 2024</h3>
+                <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">El Mejor IPTV en España 2026</h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 grow">
                   Si buscas el mejor IPTV en España, LIST PRO IPTV es la solución definitiva. Olvídate de los cortes en los momentos más importantes. Ofrecemos la lista más estable del mercado con más de 15,000 canales, incluyendo todo el contenido premium de España. Nuestra tecnología anti-buffering garantiza una experiencia fluida, convirtiéndonos en el proveedor número uno a nivel nacional. No te conformes con menos cuando puedes tener la máxima calidad.
                 </p>
