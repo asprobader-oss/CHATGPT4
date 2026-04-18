@@ -41,9 +41,9 @@ const staggerContainer = {
 
 const pageMetadata: Record<string, { title: string, description: string, keywords: string }> = {
   '': {
-    title: 'LIST PRO IPTV - Mejor IPTV España | LaLiga, DAZN, Movistar',
-    description: 'El mejor servicio IPTV en España. Disfruta de LaLiga, DAZN, Movistar, Champions League, películas y series en 4K sin cortes. Prueba gratis disponible.',
-    keywords: 'IPTV España, comprar IPTV, mejor IPTV, LaLiga IPTV, DAZN IPTV, Movistar IPTV, fútbol gratis, IPTV sin cortes, lista IPTV 2026'
+    title: 'LIST PRO IPTV - Mejor IPTV España 2026 | LaLiga, DAZN y Cine 4K',
+    description: 'Descubre el mejor servicio IPTV en España. Disfruta de todo el fútbol del momento (LaLiga, Champions), DAZN y Movistar en calidad 4K sin cortes. Activación inmediata y prueba gratuita.',
+    keywords: 'Mejor IPTV España, comprar IPTV España, IPTV LaLiga sin cortes, IPTV DAZN 4K, listas M3U premium 2026, IPTV España'
   },
   'caracteristicas': {
     title: 'Características de nuestro IPTV - LIST PRO IPTV',

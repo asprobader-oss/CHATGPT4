@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.listproiptv.com/sitemap.xml
+Sitemap: https://listproiptv.com/sitemap.xml
