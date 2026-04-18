@@ -9,16 +9,30 @@
   
   --color-brand-500: #E50914; /* Netflix red vibe */
   --color-brand-600: #B80710;
-  --color-dark-900: #050505;
-  --color-dark-800: #141414;
-  --color-dark-700: #262626;
+  --color-dark-900: #0a0b10;
+  --color-dark-800: #12141d;
+  --color-dark-700: #1e2231;
+
+  --animate-blob: blob 7s infinite;
+}
+
+@keyframes blob {
+  0% { transform: translate(0px, 0px) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0px, 0px) scale(1); }
 }
 
 body {
-  background-color: var(--color-dark-900);
-  color: #ffffff;
+  background-color: white;
+  color: #111827;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+.dark body {
+  background-color: var(--color-dark-900);
+  color: #ffffff;
 }
 
 h1, h2, h3, h4, h5, h6 {

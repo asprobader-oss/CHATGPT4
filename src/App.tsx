@@ -195,7 +195,14 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-dark-900 text-gray-900 dark:text-white selection:bg-brand-500 selection:text-white dark:selection:text-white">
+    <div className="min-h-screen bg-white dark:bg-dark-900 text-gray-900 dark:text-white selection:bg-brand-500 selection:text-white dark:selection:text-white relative overflow-x-hidden">
+      {/* Background Decorative Elements */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden hidden dark:block">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-500/10 rounded-full blur-[120px] animate-blob" />
+        <div className="absolute top-[20%] right-[-5%] w-[35%] h-[35%] bg-blue-500/10 rounded-full blur-[100px] animate-blob [animation-delay:2s]" />
+        <div className="absolute bottom-[-10%] left-[20%] w-[45%] h-[45%] bg-purple-600/10 rounded-full blur-[130px] animate-blob [animation-delay:4s]" />
+      </div>
+
       {/* Navigation */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white dark:bg-dark-900/90 backdrop-blur-md border-b border-gray-200 dark:border-white/10 py-4' : 'bg-transparent py-6'}`}>
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -274,9 +281,9 @@ export default function App() {
             className="w-full h-full object-cover opacity-60"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-white dark:bg-black/10 dark:bg-dark-900/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-900 via-white/60 dark:via-dark-900/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white dark:from-dark-900 via-white/40 dark:via-dark-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-white dark:bg-dark-900/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-900 via-white/40 dark:via-dark-900/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white dark:from-dark-900 via-white/20 dark:via-dark-900/20 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex justify-center">
@@ -411,7 +418,10 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-6">
           <motion.div {...fadeIn} className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-5xl font-display font-bold mb-6">Planes y Precios</h2>
-            <p className="text-gray-600 dark:text-gray-400 text-lg">Elige el plan que mejor se adapte a ti. Todos los planes incluyen acceso completo a LaLiga, DAZN, Movistar y nuestro catálogo VOD.</p>
+            <p className="text-gray-600 dark:text-gray-400 text-lg mb-4">Elige el plan que mejor se adapte a ti. Todos los planes incluyen acceso completo a LaLiga, DAZN, Movistar y nuestro catálogo VOD.</p>
+            <div className="inline-flex items-center gap-2 text-brand-500 font-semibold text-sm bg-brand-500/10 px-4 py-2 rounded-full border border-brand-500/20">
+              <ShieldCheck className="w-4 h-4" /> Garantía de Reembolso de 24 Horas
+            </div>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -591,6 +601,7 @@ export default function App() {
               { q: "¿Qué dispositivos son compatibles?", a: "Soportamos casi todos los dispositivos, incluyendo Smart TVs (Samsung, LG, Android TV), Amazon Firestick, Apple TV, TV Box, smartphones (iOS/Android) y PC." },
               { q: "¿Puedo ver LaLiga y la Champions League?", a: "¡Sí! Nuestra lista incluye todos los canales de DAZN, Movistar LaLiga, Movistar Liga de Campeones y canales internacionales para que no te pierdas ningún partido." },
               { q: "¿Necesito usar una VPN?", a: "No es estrictamente necesario ya que nuestro servicio está encriptado. Sin embargo, si tu proveedor de internet (ISP) bloquea el tráfico IPTV en España durante los partidos, recomendamos usar una VPN." },
+              { q: "¿Ofrecen garantía de reembolso?", a: "Nuestra prioridad es tu satisfacción. Si experimentas problemas técnicos que no podemos resolver en las primeras 24 horas, ofrecemos garantía de devolución íntegra. Por ello, siempre invitamos a nuestros clientes a usar primero la prueba gratuita." },
               { q: "¿Puedo usar mi suscripción en varios dispositivos?", a: "Los planes estándar permiten 1 conexión simultánea. Puedes instalar la lista en varios dispositivos, pero solo ver en uno a la vez. Consúltanos por WhatsApp para planes multi-conexión." },
               { q: "¿Ofrecen prueba gratuita?", a: "¡Sí! Ofrecemos una prueba gratuita para que compruebes la calidad y estabilidad de nuestros canales antes de comprar. Pídela por WhatsApp." }
             ].map((faq, i) => (
