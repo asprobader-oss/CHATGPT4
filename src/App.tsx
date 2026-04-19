@@ -5,6 +5,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import CookieBanner from './CookieBanner';
 import { 
   Tv, 
   Smartphone, 
@@ -246,10 +247,12 @@ export default function App() {
           </div>
 
           <button 
-            className="md:hidden text-gray-900 dark:text-white"
+            className="md:hidden text-gray-900 dark:text-white p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X /> : <Menu />}
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </nav>
@@ -260,21 +263,24 @@ export default function App() {
           <div className="flex flex-col gap-6 text-lg font-medium">
             <button 
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} 
-              className="flex items-center gap-2 text-gray-700 dark:text-gray-300"
+              className="flex items-center gap-3 p-4 rounded-2xl bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white"
+              aria-label="Cambiar tema"
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {theme === 'dark' ? <Sun className="w-5 h-5" aria-hidden="true" /> : <Moon className="w-5 h-5" aria-hidden="true" />}
               <span>{theme === 'dark' ? 'Modo Claro' : 'Modo Oscuro'}</span>
             </button>
             <hr className="border-gray-200 dark:border-white/10" />
-            <NavLink href="/caracteristicas"><span onClick={() => setMobileMenuOpen(false)}>Características</span></NavLink>
-            <NavLink href="/deportes"><span onClick={() => setMobileMenuOpen(false)}>Deportes</span></NavLink>
-            <NavLink href="/precios"><span onClick={() => setMobileMenuOpen(false)}>Precios</span></NavLink>
-            <NavLink href="/faq"><span onClick={() => setMobileMenuOpen(false)}>FAQ</span></NavLink>
+            <div className="flex flex-col gap-1">
+              <NavLink href="/caracteristicas"><span className="p-3 block" onClick={() => setMobileMenuOpen(false)}>Características</span></NavLink>
+              <NavLink href="/deportes"><span className="p-3 block" onClick={() => setMobileMenuOpen(false)}>Deportes</span></NavLink>
+              <NavLink href="/precios"><span className="p-3 block" onClick={() => setMobileMenuOpen(false)}>Precios</span></NavLink>
+              <NavLink href="/faq"><span className="p-3 block" onClick={() => setMobileMenuOpen(false)}>FAQ</span></NavLink>
+            </div>
             <hr className="border-gray-200 dark:border-white/10" />
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-green-500">
-              <MessageCircle className="w-5 h-5" /> Contactar por WhatsApp
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-green-500 p-3">
+              <MessageCircle className="w-6 h-6" aria-hidden="true" /> Contactar por WhatsApp
             </a>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="bg-brand-500 text-white px-5 py-3 rounded-full font-semibold text-center">
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="bg-brand-500 text-white p-4 rounded-2xl font-bold text-center mt-2 shadow-lg shadow-brand-500/20">
               Comprar Ahora
             </a>
           </div>
@@ -286,9 +292,11 @@ export default function App() {
         <div className="absolute inset-0 z-0">
           <img 
             src="https://phantom.estaticos-marca.com/a81901be3f5863936eb545dad0f94fa9/resize/828/f/webp/assets/multimedia/imagenes/2026/03/10/17731385629200.jpg" 
-            alt="Fútbol y TV Background" 
+            alt="Fondo de deportes en vivo" 
             className="w-full h-full object-cover opacity-60"
             referrerPolicy="no-referrer"
+            fetchPriority="high"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-white dark:bg-dark-900/40" />
           <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-900 via-white/40 dark:via-dark-900/40 to-transparent" />
@@ -305,13 +313,13 @@ export default function App() {
             >
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 backdrop-blur-sm mb-6">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs font-medium uppercase tracking-wider text-gray-700 dark:text-gray-300">El Mejor IPTV de España 2026</span>
+                <span className="text-xs font-medium uppercase tracking-wider text-gray-800 dark:text-gray-300">El Mejor IPTV de España 2026</span>
               </div>
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-[1.05] tracking-tight mb-6">
                 Todo el Fútbol <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-500 to-orange-500">Sin Cortes.</span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-700 dark:text-gray-400 mb-10 max-w-xl mx-auto leading-relaxed">
                 Disfruta de <strong>LaLiga, DAZN, Movistar+ y la Champions League</strong>. Más de 15,000 canales en vivo, 50,000+ películas y series en calidad 4K UHD.
               </p>
               
@@ -354,10 +362,10 @@ export default function App() {
                 <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
                   <PlayCircle className="text-brand-500 w-6 h-6" /> Fútbol y Deportes en Directo
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-400 mb-4 leading-relaxed">
                   Si buscas la mejor forma de ver <strong>LaLiga EA Sports</strong>, la <strong>Champions League</strong>, y todos los deportes de <strong>DAZN</strong> y <strong>Movistar+</strong>, has llegado al lugar indicado. En <strong>LIST PRO IPTV</strong> ofrecemos la lista más estable y completa del mercado español.
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-400 leading-relaxed">
                   Sabemos lo frustrante que es perderse un gol por culpa del buffering. Por eso, nuestros servidores premium garantizan una experiencia fluida para que puedas ver el fútbol online, la Fórmula 1, MotoGP y todos los canales de pago con calidad 4K y Full HD sin interrupciones.
                 </p>
               </div>
@@ -366,10 +374,10 @@ export default function App() {
                 <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white flex items-center gap-2">
                   <Tv className="text-brand-500 w-6 h-6" /> Cine y Series de Estreno
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-400 mb-4 leading-relaxed">
                   No solo somos la mejor opción para deportes. Nuestra suscripción incluye acceso a miles de películas de estreno, series de las plataformas más populares (Netflix, HBO Max, Disney+, Amazon Prime Video) y documentales.
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-gray-700 dark:text-gray-400 leading-relaxed">
                   Todo nuestro catálogo VOD (Video on Demand) se actualiza diariamente para que nunca te quedes sin contenido. Disfruta del mejor entretenimiento en tu Smart TV, móvil o PC.
                 </p>
               </div>
@@ -452,10 +460,10 @@ export default function App() {
                     Más Popular
                   </div>
                 )}
-                <h3 className="text-xl font-medium text-gray-600 dark:text-gray-400 mb-4">{plan.duration}</h3>
+                <h3 className="text-xl font-medium text-gray-700 dark:text-gray-400 mb-4">{plan.duration}</h3>
                 <div className="flex items-baseline gap-1 mb-2">
                   <span className="text-4xl font-display font-bold">{plan.price}</span>
-                  <span className="text-gray-500">{plan.period}</span>
+                  <span className="text-gray-600">{plan.period}</span>
                 </div>
                 <p className="text-sm text-brand-500 font-medium mb-6">{plan.total}</p>
                 
@@ -506,15 +514,17 @@ export default function App() {
             >
               <div className="h-64 overflow-hidden shrink-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Mejor IPTV España" 
+                  src="https://images.unsplash.com/photo-1593784991095-a205069470b6?q=70&w=800&fm=webp&auto=format&fit=crop" 
+                  alt="Servicio IPTV en España con tecnología 4K" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-8 flex flex-col grow">
                 <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">El Mejor IPTV en España 2026</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 grow">
+                <p className="text-gray-700 dark:text-gray-400 leading-relaxed mb-6 grow">
                   Si buscas el mejor IPTV en España, LIST PRO IPTV es la solución definitiva. Olvídate de los cortes en los momentos más importantes. Ofrecemos la lista más estable del mercado con más de 15,000 canales, incluyendo todo el contenido premium de España. Nuestra tecnología anti-buffering garantiza una experiencia fluida, convirtiéndonos en el proveedor número uno a nivel nacional. No te conformes con menos cuando puedes tener la máxima calidad.
                 </p>
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-brand-600 dark:text-brand-500 font-semibold hover:text-brand-700 dark:hover:text-brand-400 flex items-center gap-2 mt-auto">
@@ -530,15 +540,17 @@ export default function App() {
             >
               <div className="h-64 overflow-hidden shrink-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=80&w=2057&auto=format&fit=crop" 
-                  alt="Mejor aparato para IPTV" 
+                  src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?q=70&w=800&fm=webp&auto=format&fit=crop" 
+                  alt="Mejor dispositivo Android TV Box para IPTV" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-8 flex flex-col grow">
                 <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">El Mejor Aparato para usar para ver IPTV</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 grow">
+                <p className="text-gray-700 dark:text-gray-400 leading-relaxed mb-6 grow">
                   ¿Cuál es el mejor aparato para ver IPTV? Aunque nuestro servicio es compatible con Smart TVs, móviles y PCs, para la mejor experiencia recomendamos usar un <strong>Amazon Fire TV Stick 4K Max</strong>, un <strong>Apple TV 4K</strong>, o un TV Box Android de alto rendimiento como el <strong>NVIDIA Shield TV</strong>. Estos dispositivos ofrecen procesadores potentes que manejan la decodificación de video 4K sin esfuerzo, asegurando una navegación rápida por nuestra enorme librería VOD y una reproducción de canales en vivo impecable.
                 </p>
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-brand-600 dark:text-brand-500 font-semibold hover:text-brand-700 dark:hover:text-brand-400 flex items-center gap-2 mt-auto">
@@ -554,15 +566,17 @@ export default function App() {
             >
               <div className="h-64 overflow-hidden shrink-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2070&auto=format&fit=crop" 
-                  alt="Fútbol LaLiga, Barça, Madrid, Atlético" 
+                  src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=70&w=800&fm=webp&auto=format&fit=crop" 
+                  alt="Fútbol en vivo Real Madrid vs Barcelona" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-8 flex flex-col grow">
                 <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Fútbol Total: LaLiga, Barça, Madrid y Atlético</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 grow">
+                <p className="text-gray-700 dark:text-gray-400 leading-relaxed mb-6 grow">
                   Vive la pasión de LaLiga EA Sports como si estuvieras en el estadio. Con LIST PRO IPTV, no te perderás ni un solo partido del <strong>Real Madrid, FC Barcelona, o Atlético de Madrid</strong>. Disfruta de El Clásico, los derbis y toda la Champions League en calidad 4K UHD. Siente cada gol, cada jugada y cada victoria con la mejor transmisión en directo, sin interrupciones y con comentarios en español.
                 </p>
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-brand-600 dark:text-brand-500 font-semibold hover:text-brand-700 dark:hover:text-brand-400 flex items-center gap-2 mt-auto">
@@ -578,15 +592,17 @@ export default function App() {
             >
               <div className="h-64 overflow-hidden shrink-0">
                 <img 
-                  src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=2070&auto=format&fit=crop" 
-                  alt="IPTV 4K Sin Cortes" 
+                  src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=70&w=800&fm=webp&auto=format&fit=crop" 
+                  alt="Streaming 4K sin cortes" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="p-8 flex flex-col grow">
                 <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">IPTV 4K Sin Cortes: La Revolución</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6 grow">
+                <p className="text-gray-700 dark:text-gray-400 leading-relaxed mb-6 grow">
                   El entretenimiento en casa ha evolucionado. Con nuestra tecnología de servidores premium, el IPTV 4K sin cortes es una realidad. Accede a más de 50,000 películas y series de estreno de plataformas como Netflix, HBO, Disney y Amazon Prime. Todo en un solo lugar, con una interfaz fácil de usar y actualización diaria de contenido. Di adiós a las múltiples suscripciones costosas y únete a la revolución del streaming inteligente.
                 </p>
                 <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-brand-600 dark:text-brand-500 font-semibold hover:text-brand-700 dark:hover:text-brand-400 flex items-center gap-2 mt-auto">
@@ -623,7 +639,13 @@ export default function App() {
       {/* CTA Section */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-brand-600">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?q=80&w=2070&auto=format&fit=crop')] mix-blend-overlay opacity-20 object-cover" />
+          <img 
+            src="https://images.unsplash.com/photo-1600294037681-c80b4cb5b434?q=70&w=1200&fm=webp&auto=format&fit=crop" 
+            alt="Mejorar TV con IPTV" 
+            className="w-full h-full object-cover mix-blend-overlay opacity-20"
+            loading="lazy"
+            decoding="async"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-dark-900 to-transparent" />
         </div>
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
@@ -695,6 +717,7 @@ export default function App() {
           </div>
         </div>
       </footer>
+      <CookieBanner />
     </div>
   );
 }

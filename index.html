@@ -6,8 +6,17 @@
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      
+      // Google Consent Mode v2 Default Settings (GDPR compliance)
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+      });
 
+      gtag('js', new Date());
       gtag('config', 'G-021P4WWX79');
     </script>
     <!-- Google Tag Manager -->
@@ -19,6 +28,12 @@
     <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0b10" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="preconnect" href="https://phantom.estaticos-marca.com" />
     
     <!-- Primary Meta Tags -->
     <title>LIST PRO IPTV - Mejor IPTV España 2026 | LaLiga, DAZN y Cine 4K</title>
