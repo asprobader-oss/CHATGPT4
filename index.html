@@ -1,31 +1,38 @@
 <!doctype html>
 <html lang="es-ES">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-021P4WWX79"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      
-      // Google Consent Mode v2 Default Settings (GDPR compliance)
-      gtag('consent', 'default', {
-        'analytics_storage': 'denied',
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-      });
+      // Defer third-party tracking entirely until the page is fully loaded to prevent FCP and LCP blocking.
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          // Google Consent Mode v2 Default Settings
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            'analytics_storage': 'denied',
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied',
+            'wait_for_update': 500
+          });
+          gtag('js', new Date());
+          gtag('config', 'G-021P4WWX79');
 
-      gtag('js', new Date());
-      gtag('config', 'G-021P4WWX79');
+          // Explicitly load gtag script
+          var gtagScript = document.createElement('script');
+          gtagScript.async = true;
+          gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-021P4WWX79";
+          document.head.appendChild(gtagScript);
+
+          // Google Tag Manager
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-MSPR8GB4');
+        }, 800); // 800ms delay post-load to guarantee main thread is idle
+      });
     </script>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MSPR8GB4');</script>
-    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#0a0b10" />
@@ -83,6 +90,14 @@
       }
     }
     </script>
+    <style>
+      body { margin: 0; padding: 0; background-color: #0a0b10; }
+      #root:empty {
+        display: block; width: 100vw; height: 100vh;
+        background-color: #0a0b10;
+        background-image: radial-gradient(circle at 50% 50%, #1e2231 0%, #0a0b10 100%);
+      }
+    </style>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

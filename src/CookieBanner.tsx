@@ -8,7 +8,7 @@ export function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem('cookieConsent');
     if (!consent) {
-      const timer = setTimeout(() => setShowBanner(true), 1500);
+      const timer = setTimeout(() => setShowBanner(true), 2500);
       return () => clearTimeout(timer);
     } else if (consent === 'granted') {
       updateGtagConsent('granted');
