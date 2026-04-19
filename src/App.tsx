@@ -324,8 +324,8 @@ export default function App() {
               </p>
               
               <div className="flex flex-col sm:flex-row justify-center gap-4 w-full">
-                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="bg-green-600 hover:bg-green-500 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
-                  <MessageCircle className="w-5 h-5" />
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="bg-[#25D366] hover:bg-[#20bd5a] text-gray-900 px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-2">
+                  <MessageCircle className="w-5 h-5 font-bold" />
                   Pedir Prueba Gratis
                 </a>
                 <NavLink href="/precios">
@@ -463,7 +463,7 @@ export default function App() {
                 <h3 className="text-xl font-medium text-gray-700 dark:text-gray-400 mb-4">{plan.duration}</h3>
                 <div className="flex items-baseline gap-1 mb-2">
                   <span className="text-4xl font-display font-bold">{plan.price}</span>
-                  <span className="text-gray-600">{plan.period}</span>
+                  <span className="text-gray-600 dark:text-gray-400">{plan.period}</span>
                 </div>
                 <p className="text-sm text-brand-500 font-medium mb-6">{plan.total}</p>
                 
@@ -471,7 +471,7 @@ export default function App() {
                   href={WA_LINK} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className={`w-full py-3 rounded-xl font-semibold transition-all mb-8 flex items-center justify-center gap-2 ${plan.popular ? 'bg-green-600 hover:bg-green-500 text-white' : 'bg-gray-200 dark:bg-white/10 hover:bg-white/20 text-gray-900 dark:text-white'}`}
+                  className={`w-full py-3 rounded-xl font-bold transition-all mb-8 flex items-center justify-center gap-2 ${plan.popular ? 'bg-[#25D366] hover:bg-[#20bd5a] text-gray-900' : 'bg-gray-200 dark:bg-white/10 hover:bg-white/20 text-gray-900 dark:text-white'}`}
                 >
                   <MessageCircle className="w-5 h-5" /> Contratar por WhatsApp
                 </a>
@@ -651,7 +651,7 @@ export default function App() {
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
           <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">¿Listo para mejorar tu TV?</h2>
           <p className="text-xl text-gray-900 dark:text-gray-800 dark:text-white/80 mb-10 max-w-2xl mx-auto">Únete a miles de clientes satisfechos en España y empieza a disfrutar del mejor contenido hoy mismo.</p>
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-green-500 text-white hover:bg-green-400 px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-[#25D366] text-gray-900 hover:bg-[#20bd5a] px-8 py-4 rounded-full text-lg font-bold transition-all hover:scale-105 active:scale-95 shadow-xl">
             <MessageCircle className="w-6 h-6" /> Contactar por WhatsApp: 607 998 181
           </a>
         </div>
@@ -683,7 +683,7 @@ export default function App() {
             </div>
             
             <div>
-              <h4 className="font-bold mb-4 text-gray-900 dark:text-white">Servicio</h4>
+              <h3 className="font-bold mb-4 text-gray-900 dark:text-white">Servicio</h3>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                 <li><NavLink href="/precios">Precios</NavLink></li>
                 <li><NavLink href="/deportes">Deportes en Directo</NavLink></li>
@@ -692,7 +692,7 @@ export default function App() {
             </div>
 
             <div>
-              <h4 className="font-bold mb-4 text-gray-900 dark:text-white">Soporte</h4>
+              <h3 className="font-bold mb-4 text-gray-900 dark:text-white">Soporte</h3>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                 <li><a href={WA_LINK} className="hover:text-gray-900 dark:hover:text-white transition-colors">Contacto WhatsApp</a></li>
                 <li><NavLink href="/faq">Preguntas Frecuentes</NavLink></li>
@@ -701,7 +701,7 @@ export default function App() {
             </div>
 
             <div>
-              <h4 className="font-bold mb-4 text-gray-900 dark:text-white">Contacto</h4>
+              <h3 className="font-bold mb-4 text-gray-900 dark:text-white">Contacto</h3>
               <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
                 <li className="flex items-center gap-2">
                   <MessageCircle className="w-4 h-4 text-green-500" /> +34 607 998 181
@@ -712,7 +712,7 @@ export default function App() {
             </div>
           </div>
 
-          <div className="border-t border-gray-200 dark:border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+          <div className="border-t border-gray-200 dark:border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600 dark:text-gray-400">
             <p>© {new Date().getFullYear()} LIST PRO IPTV. Todos los derechos reservados.</p>
           </div>
         </div>
