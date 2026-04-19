@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es-ES">
+<html lang="es-ES" class="dark">
   <head>
     <script>
       // Defer third-party tracking entirely until the page is fully loaded to prevent FCP and LCP blocking.
@@ -39,7 +39,11 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;700;800;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@600;700;800;900&display=swap" />
+    </noscript>
     <link rel="preconnect" href="https://images.unsplash.com" />
     <link rel="preconnect" href="https://phantom.estaticos-marca.com" />
     <link rel="preload" as="image" href="https://phantom.estaticos-marca.com/a81901be3f5863936eb545dad0f94fa9/resize/828/f/webp/assets/multimedia/imagenes/2026/03/10/17731385629200.jpg" fetchpriority="high">

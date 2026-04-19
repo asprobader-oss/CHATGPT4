@@ -133,7 +133,7 @@ const updateMetadata = (path: string) => {
   }
 };
 
-const NavLink = ({ href, children }: { href: string, children: React.ReactNode }) => {
+const NavLink = ({ href, children }: { href: string; children: React.ReactNode }) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const targetId = href.replace('/', '');
@@ -154,7 +154,12 @@ const NavLink = ({ href, children }: { href: string, children: React.ReactNode }
 export default function App() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    if (typeof document !== 'undefined') {
+      return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+    }
+    return 'dark';
+  });
 
   useEffect(() => {
     if (theme === 'dark') {
