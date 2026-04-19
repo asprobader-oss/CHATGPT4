@@ -21,7 +21,8 @@ import {
   Globe2,
   MessageCircle,
   Sun,
-  Moon
+  Moon,
+  Star
 } from 'lucide-react';
 
 const WA_LINK = "https://wa.me/34607998181?text=Hola,%20estoy%20interesado%20en%20los%20servicios%20de%20LIST%20PRO%20IPTV.";
@@ -610,6 +611,68 @@ export default function App() {
                 </a>
               </div>
             </motion.article>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonios" className="py-24 bg-gray-50 dark:bg-dark-800">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div {...fadeIn} className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-6 text-gray-900 dark:text-white">Lo que dicen nuestros clientes</h2>
+            <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
+              Más de 10,000 usuarios en toda España ya disfrutan del mejor contenido sin interrupciones.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Carlos M.",
+                role: "Usuario Anual",
+                text: "Por fin encuentro un servicio que no se corta en los partidos importantes. La calidad del Clásico fue espectacular. Lo recomiendo al 100%.",
+              },
+              {
+                name: "Laura G.",
+                role: "Usuario Mensual",
+                text: "La variedad de series y películas es impresionante. Además, el servicio técnico por WhatsApp me ayudó a configurarlo en mi Smart TV en 5 minutos.",
+              },
+              {
+                name: "David R.",
+                role: "Usuario Anual",
+                text: "Llevo probando muchos proveedores y este es de lejos el más estable. DAZN y LaLiga en calidad 4K sin ningún tipo de delay. Excelente.",
+              }
+            ].map((testimonial, i) => (
+              <motion.div
+                key={i}
+                initial="initial"
+                whileInView="animate"
+                viewport={{ once: true }}
+                variants={{
+                  initial: { opacity: 0, y: 20 },
+                  animate: { opacity: 1, y: 0, transition: { delay: i * 0.1 } }
+                }}
+                className="bg-white dark:bg-dark-900 p-8 rounded-3xl border border-gray-200 dark:border-white/5 shadow-sm"
+              >
+                <div className="flex gap-1 mb-6 text-brand-500">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-700 dark:text-gray-300 text-lg mb-8 italic">
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                    {testimonial.name[0]}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 dark:text-white">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
