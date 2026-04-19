@@ -198,7 +198,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white dark:bg-dark-900 text-gray-900 dark:text-white selection:bg-brand-500 selection:text-white dark:selection:text-white relative overflow-x-hidden">
       {/* Background Decorative Elements */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden hidden dark:block">
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden hidden md:dark:block">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-brand-500/10 rounded-full blur-[120px] animate-blob" />
         <div className="absolute top-[20%] right-[-5%] w-[35%] h-[35%] bg-blue-500/10 rounded-full blur-[100px] animate-blob [animation-delay:2s]" />
         <div className="absolute bottom-[-10%] left-[20%] w-[45%] h-[45%] bg-purple-600/10 rounded-full blur-[130px] animate-blob [animation-delay:4s]" />
@@ -305,12 +305,7 @@ export default function App() {
 
         <div className="max-w-7xl mx-auto px-6 relative z-10 w-full flex justify-center">
           <div className="max-w-4xl text-center flex flex-col items-center">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="flex flex-col items-center"
-            >
+            <div className="flex flex-col items-center animate-fade-in-up">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gray-100 dark:bg-white/5 border border-gray-200 dark:border-white/10 backdrop-blur-sm mb-6">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-xs font-medium uppercase tracking-wider text-gray-800 dark:text-gray-300">El Mejor IPTV de España 2026</span>
@@ -329,7 +324,7 @@ export default function App() {
                   Pedir Prueba Gratis
                 </a>
                 <NavLink href="/precios">
-                  <span className="bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/15 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all backdrop-blur-sm flex items-center justify-center gap-2">
+                  <span className="bg-gray-200 dark:bg-white/10 hover:bg-gray-300 dark:hover:bg-white/15 text-gray-900 dark:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all backdrop-blur-sm flex items-center justify-center gap-2">
                     Ver Precios
                   </span>
                 </NavLink>
@@ -346,7 +341,7 @@ export default function App() {
                   <CheckCircle2 className="w-4 h-4 text-brand-500" /> Servidores Premium
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
